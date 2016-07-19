@@ -14,11 +14,11 @@ import haarfilterall.util.CalculateFeature;
 public class Features {
 
     public int[] FeatureA(int w, int h, int[][] intValues) {
-        int imgH = 5;
-        int imgW = 5;
+        int imgH = 24;
+        int imgW = 24;
         int count = 0;
         int tempFeature = 0;
-        int[] featureValues = new int[150];
+        int[] featureValues = new int[43200];
 //        int[][] integralValues = new int[5][5];
         /**
          * Image area is a class to calculate the area of a certain window
@@ -49,19 +49,19 @@ public class Features {
                         }
                     }
                 }
-                System.out.println("");
-                System.out.println("COUNT= " + count);
+//                System.out.println("");
+//                System.out.println("COUNT= " + count);
             }
         }
         return featureValues;
     }
 
     public int[] FeatureB(int w, int h, int[][] intValues) {
-        int imgH = 5;
-        int imgW = 5;
+        int imgH = 24;
+        int imgW = 24;
         int count = 0;
         int tempFeature = 0;
-        int[] featureValues = new int[150];
+        int[] featureValues = new int[43200];
 //        int[][] integralValues = new int[5][5];
         /**
          * Image area is a class to calculate the area of a certain window
@@ -91,8 +91,8 @@ public class Features {
                         }
                     }
                 }
-                System.out.println("");
-                System.out.println("COUNT= " + count);
+//                System.out.println("");
+//                System.out.println("COUNT= " + count);
             }
         }
         return featureValues;

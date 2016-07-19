@@ -14,8 +14,7 @@ public class CalculateFeature {
     public int CalculateSubtractionA(int winWidth, int winHeight, int sliderPosCol, int sliderPosRow, int count, int[][] intValues) {
 
         CalculateArea calculateArea = new CalculateArea();
-        int[] rectValues = new int[4];
-        int blackPortion = 0, whitePortion = 0, feature = 0;
+        int blackPortion = 0, whitePortion = 0;
 
         int a = winWidth;
         int b = winHeight;
@@ -36,8 +35,8 @@ public class CalculateFeature {
         whitePortion = calculateArea.PointsCalculation(a, b, c + winWidth, d, intValues);
 
         featureValues = blackPortion - whitePortion;
-        System.out.println(" ");
-        System.out.println("FEATURE VALUE = " + featureValues);
+//        System.out.println(" ");
+//        System.out.println("FEATURE VALUE = " + featureValues);
 
         /**
          * Ultimately another portion will be chosen with respect to the above
@@ -51,8 +50,7 @@ public class CalculateFeature {
     public int CalculateSubtractionB(int winWidth, int winHeight, int sliderPosCol, int sliderPosRow, int count, int[][] intValues) {
 
         CalculateArea calculateArea = new CalculateArea();
-        int[] rectValues = new int[4];
-        int blackPortion = 0, whitePortion = 0, feature = 0;
+        int blackPortion = 0, whitePortion = 0;
 
         int a = winWidth;
         int b = winHeight;
@@ -73,8 +71,8 @@ public class CalculateFeature {
         whitePortion = calculateArea.PointsCalculation(a, b, c, d + winHeight, intValues);
 
         featureValues = blackPortion - whitePortion;
-        System.out.println(" ");
-        System.out.println("FEATURE VALUE = " + featureValues);
+//        System.out.println(" ");
+//        System.out.println("FEATURE VALUE = " + featureValues);
 
         /**
          * Ultimately another portion will be chosen with respect to the above

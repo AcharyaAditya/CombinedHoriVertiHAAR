@@ -48,15 +48,15 @@ public class CalculateArea {
         d = integralValues[topRgtY][topRgtX];
 
 //        System.out.println("COUNT = " + count);
-        System.out.println("btmRT " + a);
-        System.out.println("topLFT " + b);
-        System.out.println("btmLFT " + c);
-        System.out.println("topRGT " + d);
+//        System.out.println("btmRT " + a);
+//        System.out.println("topLFT " + b);
+//        System.out.println("btmLFT " + c);
+//        System.out.println("topRGT " + d);
 
         featureValues = ((a + b) - (c + d));
-        System.out.println("feature at column: " + sliderPosCol + " row: " + sliderPosRow);
-        System.out.println("window width= " + winWidth + " window height= " + winHeight + " IS " + (featureValues));
-        System.out.println("");
+//        System.out.println("feature at column: " + sliderPosCol + " row: " + sliderPosRow);
+//        System.out.println("window width= " + winWidth + " window height= " + winHeight + " IS " + (featureValues));
+//        System.out.println("");
         return featureValues;
     }
 
