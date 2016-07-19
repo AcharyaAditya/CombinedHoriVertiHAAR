@@ -5,6 +5,7 @@
  */
 package haarfilterall;
 
+import HistogramEqualization.impl.HistEq;
 import haarfilterall.features.Features;
 import haarfilterall.util.IntegralImage;
 import java.awt.image.BufferedImage;
@@ -21,39 +22,61 @@ public class HaarFilterAll {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException{
-        
-        BufferedImage img = null;
-        img = ImageIO.read(new File("image\\face.png"));
+    public static void main(String[] args) throws IOException {
 
-        int[][] values = new int[24][24];
-        int[][] intValues = new int[24][24];
-
-        int numBands = img.getRaster().getNumBands();
-        int[] iarray = new int[numBands];
-//        int count = 0;
-        for (int i = 0; i < 24; i++) {
-            for (int j = 0; j < 24; j++) {
-
-                values[i][j] = img.getRaster().getPixel(i, j, iarray)[0];
-            }
-        }
-
-//        int[][] values = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
-//        int[][] intValues = new int[5][5];
         int[] twoHoriFea = new int[43200];
         int[] twoVertFea = new int[43200];
-//        int[] threeHoriFea = new int[150];
-//        int[] threeVertFea = new int[150];
-//        int[] fourRectFea = new int[150];
-
-        IntegralImage integralImage = new IntegralImage();
-        intValues = integralImage.Integral(values);
+//      int[] threeHoriFea = new int[150];
+//      int[] threeVertFea = new int[150];
+        int[] fourRectFea = new int[43200];
+        int[][] values = new int[24][24];
+        int[][] intValues = new int[24][24];
+        int[] iarray = new int[3];
 
         Features features = new Features();
-        twoHoriFea = features.FeatureA(2, 1, intValues);
-        twoVertFea = features.FeatureB(1, 2, intValues);
+        IntegralImage integralImage = new IntegralImage();
 
+        BufferedImage img = null;
+        img = ImageIO.read(new File("image\\test1.jpg"));
+
+        HistEq histEq = new HistEq();                                           //call histogram equilization
+        img = histEq.Change(img);                                               //retreive equilized image
+
+//        File f1 = new File("subhisto\\histotest001.png");                         //save the whole equalized image without subimaging
+//        ImageIO.write(img, "png", f1);
+        int count = 0;                                                          //for naming convention as well as keeping track of the number of sub images.
+
+        for (int i = 0; i <= (img.getHeight() - 24); i++) {                     //For a 24x24 Pixel image define height such that the last image to be extracted has atleast 24 Pixels to work with
+
+            for (int j = 0; j <= (img.getWidth() - 24); j++) {                  //*For a 24x24 Pixel image define width such that the last image to be extracted has atleast 24 Pixels to work with
+
+                BufferedImage sub = img.getSubimage(j, i, 24, 24);              //sub image starting point defined by i and j & 24x4 is the needed size for the sub image.             
+                count++;
+//                int[][] values = new int[24][24];
+//                int[][] intValues = new int[24][24];
+
+//                int numBands = img.getRaster().getNumBands();
+//                int[] iarray = new int[numBands];
+
+                for (int k = 0; k < 24; k++) {
+                    for (int l = 0; l < 24; l++) {
+
+                        values[k][l] = img.getRaster().getPixel(k, l, iarray)[0];
+                    }
+                }
+
+//              IntegralImage integralImage = new IntegralImage();
+                intValues = integralImage.Integral(values);
+
+//                Features features = new Features();
+//                features.FeatureA(2, 1, intValues);
+//                features.FeatureB(1, 2, intValues);
+//                features.FeatureE(2, 2, intValues);
+           
+                twoHoriFea = features.FeatureA(2, 1, intValues);
+                twoVertFea = features.FeatureB(1, 2, intValues);
+                fourRectFea = features.FeatureE(2, 2, intValues);
+                
 //        for (int i = 1; i <= 36432; i++) {
 //            System.out.println("Horizontal features = " + twoHoriFea[i]);
 ////            System.out.println("Vertical features = " + twoVertFea[i]);
@@ -62,7 +85,18 @@ public class HaarFilterAll {
 ////            System.out.println("Horizontal features = " + twoHoriFea[i]);
 //            System.out.println("Vertical features = " + twoVertFea[i]);
 //        }
-//
+//        for (int i = 1; i <= 17424; i++) {
+////            System.out.println("Horizontal features = " + twoHoriFea[i]);
+//            System.out.println("R_features = " + fourRectFea[i]);
+//        }
+//                System.out.println("IMAGE NUMBER = " + count);
+            }
+
+//               
+//                    HistoNormalize histoNormalize = new HistoNormalize();
+//                    histoNormalize.HistoNormal(sub);
+        }
+        System.out.println("IMAGE NUMBER = " + count);
     }
 
 }
