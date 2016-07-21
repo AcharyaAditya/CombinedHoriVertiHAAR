@@ -16,9 +16,6 @@ public class CalculateArea {
         int btmRgtX, btmRgtY, btmLftX, btmLftY, topRgtX, topRgtY, topLftX, topLftY, a, b, c, d;
         int featureValues;
 
-//        int[][] integralValues = new int[5][5];
-//        IntegralImage integralImage = new IntegralImage();
-//        integralValues = integralImage.Integral();
         /**
          * My window width value is the 'i' from features which starts from 1
          * hence, -1 for adjusting width since for window width 1, the window
