@@ -6,6 +6,7 @@
 package haarfilterall;
 
 import HistogramEqualization.impl.HistEq;
+import ThreadPackage.RunnableThread;
 import haarfilterall.features.Features;
 import haarfilterall.util.IntegralImage;
 import java.awt.image.BufferedImage;
@@ -37,7 +38,7 @@ public class HaarFilterAll {
         IntegralImage integralImage = new IntegralImage();
 
         BufferedImage img = null;
-        img = ImageIO.read(new File("image\\test1.jpg"));
+        img = ImageIO.read(new File("image/test1.jpg"));
 
         HistEq histEq = new HistEq();                                           //call histogram equilization
         img = histEq.Change(img);                                               //retreive equilized image
@@ -72,7 +73,15 @@ public class HaarFilterAll {
 //                features.FeatureA(2, 1, intValues);
 //                features.FeatureB(1, 2, intValues);
 //                features.FeatureE(2, 2, intValues);
-           
+//                RunnableThread R1 = new RunnableThread(2,1,intValues, "horizontal", 1);
+//                twoHoriFea = R1.start();
+//                
+//                RunnableThread R2 = new RunnableThread(1,2,intValues, "Vertical",2);
+//                twoVertFea = R2.start();
+//                
+//                RunnableThread R3 = new RunnableThread(2,2,intValues, "Four",5);
+//                fourRectFea = R3.start();
+                
                 twoHoriFea = features.FeatureA(2, 1, intValues);
                 twoVertFea = features.FeatureB(1, 2, intValues);
                 fourRectFea = features.FeatureE(2, 2, intValues);
