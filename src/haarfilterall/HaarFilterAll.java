@@ -62,7 +62,7 @@ public class HaarFilterAll {
                 for (int k = 0; k < 24; k++) {
                     for (int l = 0; l < 24; l++) {
 
-                        values[k][l] = img.getRaster().getPixel(k, l, iarray)[0];
+                        values[k][l] = sub.getRaster().getPixel(k, l, iarray)[0];
                     }
                 }
 
@@ -73,18 +73,18 @@ public class HaarFilterAll {
 //                features.FeatureA(2, 1, intValues);
 //                features.FeatureB(1, 2, intValues);
 //                features.FeatureE(2, 2, intValues);
-//                RunnableThread R1 = new RunnableThread(2,1,intValues, "horizontal", 1);
-//                twoHoriFea = R1.start();
-//                
-//                RunnableThread R2 = new RunnableThread(1,2,intValues, "Vertical",2);
-//                twoVertFea = R2.start();
-//                
-//                RunnableThread R3 = new RunnableThread(2,2,intValues, "Four",5);
-//                fourRectFea = R3.start();
+                RunnableThread R1 = new RunnableThread(2,1,intValues, "horizontal", 1);
+                twoHoriFea = R1.start();
                 
-                twoHoriFea = features.FeatureA(2, 1, intValues);
-                twoVertFea = features.FeatureB(1, 2, intValues);
-                fourRectFea = features.FeatureE(2, 2, intValues);
+                RunnableThread R2 = new RunnableThread(1,2,intValues, "Vertical",2);
+                twoVertFea = R2.start();
+                
+                RunnableThread R3 = new RunnableThread(2,2,intValues, "Four",5);
+                fourRectFea = R3.start();
+                
+//                twoHoriFea = features.FeatureA(2, 1, intValues);
+//                twoVertFea = features.FeatureB(1, 2, intValues);
+//                fourRectFea = features.FeatureE(2, 2, intValues);
                 
 //        for (int i = 1; i <= 36432; i++) {
 //            System.out.println("Horizontal features = " + twoHoriFea[i]);
