@@ -64,7 +64,7 @@ public class HaarFilterAll {
                 for (int k = 0; k < 24; k++) {
                     for (int l = 0; l < 24; l++) {
 
-                        values[k][l] = img.getRaster().getPixel(k, l, iarray)[0];
+                        values[k][l] = sub.getRaster().getPixel(k, l, iarray)[0];
                     }
                 }
 
@@ -80,6 +80,10 @@ public class HaarFilterAll {
 //                R1.start();
 //                ParallelRun R2 = new ParallelRun("Filter2", 2, intValues);
 //                R2.start();
+//                ParallelRun R3 = new ParallelRun("Filter1", 3, intValues);
+//                R3.start();
+//                ParallelRun R4 = new ParallelRun("Filter2", 4, intValues);
+//                R4.start();
                 twoHoriFea = features.FeatureA(2, 1, intValues);
                 twoVertFea = features.FeatureB(1, 2, intValues);
                 threeHoriFea = features.FeatureC(3, 1, intValues);
